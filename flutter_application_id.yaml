@@ -1,0 +1,7 @@
+flutter_application_id:
+  android:
+    id: "com.quicko.ms"
+    name: "Glover"
+  ios:
+    id: "com.quicko.ms"
+    name: "Glover"
