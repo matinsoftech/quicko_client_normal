@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 
-class NotificationModel {
+class MyNotificationModel {
   int index;
   String title;
   String body;
@@ -8,7 +8,7 @@ class NotificationModel {
   int timeStamp;
   bool read;
 
-  NotificationModel({
+  MyNotificationModel({
     this.index,
     this.title,
     this.body,

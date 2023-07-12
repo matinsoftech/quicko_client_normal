@@ -4,9 +4,6 @@ import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:fuodz/view_models/payment.view_model.dart';
-import 'package:fuodz/views/pages/profile/privacy_policy.page.dart';
-import 'package:fuodz/views/pages/profile/terms_and_conditions.page.dart';
-import 'package:fuodz/views/pages/profile/contact.page.dart';
 import 'package:fuodz/views/pages/splash.page.dart';
 import 'package:i18n_extension/i18n_widget.dart';
 import 'package:fuodz/constants/api.dart';
@@ -167,19 +164,19 @@ class ProfileViewModel extends PaymentViewModel {
 
   //
   openPrivacyPolicy() async {
-    viewContext.navigator
-        .push(MaterialPageRoute(builder: (context) => PrivacyPolicyPage()));
+    final url = Api.privacyPolicy;
+    openWebpageLink(url);
   }
 
   openTerms() {
-    viewContext.navigator.push(
-        MaterialPageRoute(builder: (context) => TermsAndConditionsPage()));
+    final url = Api.terms;
+    openWebpageLink(url);
   }
 
   //
   openContactUs() async {
-    viewContext.navigator
-        .push(MaterialPageRoute(builder: (context) => ContactPage()));
+    final url = Api.contactUs;
+    openWebpageLink(url);
   }
 
   //

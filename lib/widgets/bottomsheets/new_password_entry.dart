@@ -28,25 +28,42 @@ class _NewPasswordEntryState extends State<NewPasswordEntry> {
       child: VStack(
         [
           //
-          "New Password".i18n.text.bold.xl2.makeCentered(),
-          "Please enter account new password".i18n.text.makeCentered(),
+          // "New Password".i18n.text.bold.xl2.makeCentered(),
+          // "Please enter account new password".i18n.text.makeCentered(),
           //pin code
-          CustomTextFormField(
-            labelText: "New Password".i18n,
-            textEditingController: widget.vm.passwordTEC,
-            validator: FormValidator.validatePassword,
-            obscureText: true,
-          ).py12(),
+          // CustomTextFormField(
+          //   labelText: "New Password".i18n,
+          //   textEditingController: widget.vm.passwordTEC,
+          //   validator: FormValidator.validatePassword,
+          //   obscureText: true,
+          // ).py12(),
 
-          //submit
-          CustomButton(
-            title: "Reset Password".i18n,
-            onPressed: () {
-              if (resetFormKey.currentState.validate()) {
-                widget.onSubmit(widget.vm.passwordTEC.text);
-              }
-            },
+          // //submit
+          // CustomButton(
+          //   title: "Reset Password".i18n,
+          //   onPressed: () {
+          //     if (resetFormKey.currentState.validate()) {
+          //       widget.onSubmit(widget.vm.passwordTEC.text);
+          //     }
+          //   },
+          // ).h(Vx.dp48),
+
+          "The password has been sucesfully rested".i18n.text.makeCentered(),
+          SizedBox(height: 20,),
+           Center(
+             child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Color(0XFF075f5f)
+              ),
+              child: Text("Login now"),
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+
+              },
           ).h(Vx.dp48),
+           ),
+
         ],
       ).p20().h(context.percentHeight * 90),
     );

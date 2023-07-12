@@ -2,22 +2,22 @@
 
 class Api {
   static String get baseUrl {
-    return "https://muskoin.space/api";
+    return "https://quickonepal.com/api";
     // return "http://192.168.8.168:8000/api";
   }
 
-  static const appSettings = "/app/settings";
+  static  const appSettings = "/app/settings";
 
   static const login = "/login";
-  static const register = "/register";
+  static const register = "/register/post";
   static const logout = "/logout";
   static const forgotPassword = "/password/reset/init";
   static const verifyPhoneAccount = "/verify/phone";
   static const updateProfile = "/profile/update";
   static const updatePassword = "/profile/password/update";
   //
-  static const sendOtp = "/otp/send";
-  static const verifyOtp = "/otp/verify";
+  static const sendOtp = "/password/reset/init";
+  static const verifyOtp = "/password/reset/confirm";
 
   //
   static const banners = "/banners";

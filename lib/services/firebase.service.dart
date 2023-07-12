@@ -29,7 +29,7 @@ class FirebaseService {
   FirebaseService._() {}
 
   //
-  NotificationModel notificationModel;
+  MyNotificationModel notificationModel;
   FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
   dynamic notificationPayloadData;
 
@@ -64,7 +64,7 @@ class FirebaseService {
       return;
     }
     //Saving the notification
-    notificationModel = NotificationModel();
+    notificationModel = MyNotificationModel();
     notificationModel.title =
         message?.notification?.title ?? title ?? message?.data["title"] ?? "";
     notificationModel.body =

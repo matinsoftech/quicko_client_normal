@@ -151,15 +151,12 @@ class TaxiViewModel extends TripTaxiViewModel {
   //
   changeSelectedVehicleType(VehicleType vehicleType) {
     selectedVehicleType = vehicleType;
-    notifyListeners();
-    // calculateTotalAmount();
+    calculateTotalAmount();
   }
 
-
-
   //
-  calculateTotalAmount(double price) {
-    subTotal = price;
+  calculateTotalAmount() {
+    subTotal = selectedVehicleType.total;
     total = subTotal - (checkout.discount ?? 0);
     notifyListeners();
   }

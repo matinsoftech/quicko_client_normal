@@ -87,7 +87,7 @@ class _AddressSearchViewState extends State<AddressSearchView> {
         isLoading ? BusyIndicator().centered().p20() : UiSpacer.emptySpace(),
         //
         UiSpacer.expandedSpace(),
-        //
+        
         CustomButton(
           title: "Pick On Map".i18n,
           onPressed: () {

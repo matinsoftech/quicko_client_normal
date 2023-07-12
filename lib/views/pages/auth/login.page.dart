@@ -31,7 +31,8 @@ class _LoginPageState extends State<LoginPage> {
       builder: (context, model, child) {
         return WillPopScope(
           onWillPop: () async {
-            return !widget.required;
+            // return !widget.required;
+            Navigator.pop(context);
           },
           child: BasePage(
             showLeadingAction: !widget.required,

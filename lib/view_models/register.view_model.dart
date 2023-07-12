@@ -123,7 +123,7 @@ class RegisterViewModel extends MyBaseViewModel {
       (context) => AccountVerificationEntry(
         vm: this,
         phone: accountPhoneNumber,
-        onSubmit: (smsCode) {
+        onSubmit: (smsCode, phonenumber) {
           //
           if (AppStrings.isFirebaseOtp) {
             verifyFirebaseOTP(smsCode);
@@ -176,7 +176,7 @@ class RegisterViewModel extends MyBaseViewModel {
     setBusyForObject(firebaseVerificationId, true);
     // Sign the user in (or link) with the credential
     try {
-      await _authRequest.verifyOTP(accountPhoneNumber, smsCode);
+      await _authRequest.verifyOTP(accountPhoneNumber, smsCode, "");
       finishAccountRegistration();
     } catch (error) {
       viewContext.showToast(msg: "$error", bgColor: Colors.red);

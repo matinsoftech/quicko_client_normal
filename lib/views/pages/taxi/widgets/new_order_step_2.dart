@@ -114,33 +114,33 @@ class NewTaxiOrderStep2 extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Your Offer Price",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  // Text(
+                  //   "Your Offer Price",
+                  //   style: TextStyle(
+                  //     fontSize: 18,
+                  //     fontWeight: FontWeight.bold,
+                  //   ),
+                  // ),
                   UiSpacer.formVerticalSpace(space: 10),
-                  SizedBox(
-                    height: 45,
-                    child: TextFormField(
-                      controller: _priceController,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            width: 2,
-                            color: Theme.of(context).primaryColor,
-                          )
-                        )
-                      ),
-                      onFieldSubmitted: (value) {
-                        vm.calculateTotalAmount(double.parse(value));
-                      },
-                    ),
-                  )
+                  // SizedBox(
+                  //   height: 45,
+                  //   child: TextFormField(
+                  //     controller: _priceController,
+                  //     keyboardType: TextInputType.number,
+                  //     decoration: InputDecoration(
+                  //       enabledBorder: OutlineInputBorder(),
+                  //       focusedBorder: OutlineInputBorder(
+                  //         borderSide: BorderSide(
+                  //           width: 2,
+                  //           color: Theme.of(context).primaryColor,
+                  //         )
+                  //       )
+                  //     ),
+                  //     onFieldSubmitted: (value) {
+                  //       vm.calculateTotalAmount(double.parse(value));
+                  //     },
+                  //   ),
+                  // )
                 ],
               ),
             ),

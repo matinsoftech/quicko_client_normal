@@ -19,7 +19,6 @@ import 'package:fuodz/services/location.service.dart';
 import 'package:fuodz/view_models/payment.view_model.dart';
 import 'package:fuodz/views/pages/auth/login.page.dart';
 import 'package:fuodz/views/pages/cart/cart.page.dart';
-import 'package:fuodz/views/pages/profile/terms_and_conditions.page.dart';
 import 'package:fuodz/views/pages/service/service_details.page.dart';
 import 'package:fuodz/views/pages/vendor/vendor_reviews.page.dart';
 import 'package:fuodz/widgets/bottomsheets/delivery_address_picker.bottomsheet.dart';
@@ -91,8 +90,8 @@ class MyBaseViewModel extends BaseViewModel {
   }
 
   openTerms() {
-    Navigator.of(viewContext).push(
-        MaterialPageRoute(builder: (context) => TermsAndConditionsPage()));
+    final url = Api.terms;
+    openWebpageLink(url);
   }
 
   //

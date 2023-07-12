@@ -98,7 +98,7 @@ class NotificationService {
   }
 
   //
-  static Future<List<NotificationModel>> getNotifications() async {
+  static Future<List<MyNotificationModel>> getNotifications() async {
     //
     final notificationsStringList =
         (await LocalStorageService.getPrefs()).getString(
@@ -114,7 +114,7 @@ class NotificationService {
         .entries
         .map((notificationObject) {
       //
-      return NotificationModel(
+      return MyNotificationModel(
         index: notificationObject.key,
         title: notificationObject.value["title"],
         body: notificationObject.value["body"],
@@ -127,7 +127,7 @@ class NotificationService {
     }).toList();
   }
 
-  static void addNotification(NotificationModel notification) async {
+  static void addNotification(MyNotificationModel notification) async {
     //
     final notifications = await getNotifications() ?? [];
     notifications.insert(0, notification);
@@ -139,7 +139,7 @@ class NotificationService {
     );
   }
 
-  static void updateNotification(NotificationModel notificationModel) async {
+  static void updateNotification(MyNotificationModel notificationModel) async {
     //
     final notifications = await getNotifications();
     notifications.removeAt(notificationModel.index);

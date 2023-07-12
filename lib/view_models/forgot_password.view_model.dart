@@ -50,27 +50,28 @@ class ForgotPasswordViewModel extends MyBaseViewModel {
     if (formKey.currentState.validate()) {
       //
       setBusy(true);
-      final apiResponse =
-          await _authRequest.verifyPhoneAccount(accountPhoneNumber);
-      if (apiResponse.allGood) {
-        //
-        final phoneNumber = apiResponse.body["phone"];
-        accountPhoneNumber = phoneNumber;
-        if (!AppStrings.isCustomOtp) {
-          processFirebaseForgotPassword(phoneNumber);
-        } else {
-          processCustomForgotPassword(phoneNumber);
+      // final apiResponse =
+      //     await _authRequest.verifyPhoneAccount(accountPhoneNumber);
+      // if (apiResponse.allGood) {
+      //   //
+      //   final phoneNumber = apiResponse.body["phone"];
+      //   accountPhoneNumber = phoneNumber;
+      //   if (!AppStrings.isCustomOtp) {
+      //     processFirebaseForgotPassword(phoneNumber);
+      //   } else {
+        print("Here is $accountPhoneNumber");
+          processCustomForgotPassword(accountPhoneNumber);
         }
-      } else {
-        CoolAlert.show(
-          context: viewContext,
-          type: CoolAlertType.error,
-          title: "Forgot Password".i18n,
-          text: apiResponse.message,
-        );
-      }
-      setBusy(false);
-    }
+    //   } else {
+    //     CoolAlert.show(
+    //       context: viewContext,
+    //       type: CoolAlertType.error,
+    //       title: "Forgot Password".i18n,
+    //       text: apiResponse.message,
+    //     );
+    //   }
+    //   setBusy(false);
+    // }
   }
 
   //initiate the otp sending to provided phone
@@ -138,13 +139,17 @@ class ForgotPasswordViewModel extends MyBaseViewModel {
         return AccountVerificationEntry(
           vm: this,
           phone: accountPhoneNumber,
-          onSubmit: (smsCode) {
+          onSubmit: (smsCode, password) {
+
+            print("here is theification");
             //
-            if (!AppStrings.isCustomOtp) {
-              verifyFirebaseOTP(smsCode);
-            } else {
-              verifyCustomOTP(smsCode);
-            }
+            // if (!AppStrings.isCustomOtp) {
+            //   verifyFirebaseOTP(smsCode);
+            // } else
+            //  {
+
+              verifyCustomOTP(smsCode, password);
+            // }
             viewContext.pop();
           },
           onResendCode: AppStrings.isCustomOtp
@@ -192,13 +197,14 @@ class ForgotPasswordViewModel extends MyBaseViewModel {
   }
 
   //verify the provided code with the custom sms gateway server
-  void verifyCustomOTP(String smsCode) async {
+  void verifyCustomOTP(String smsCode, String password) async {
     //
     setBusyForObject(firebaseVerificationId, true);
 
     // Sign the user in (or link) with the credential
     try {
-      await _authRequest.verifyOTP(accountPhoneNumber, smsCode);
+      print("Here 000000");
+      await _authRequest.verifyOTP(accountPhoneNumber, smsCode, password);
       showNewPasswordEntry();
     } catch (error) {
       viewContext.showToast(msg: "$error", bgColor: Colors.red);

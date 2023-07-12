@@ -11,7 +11,7 @@ class NotificationDetailsPage extends StatelessWidget {
     Key key,
   }) : super(key: key);
 
-  final NotificationModel notification;
+  final MyNotificationModel notification;
 
   @override
   Widget build(BuildContext context) {

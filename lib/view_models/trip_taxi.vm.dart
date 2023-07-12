@@ -97,12 +97,12 @@ class TripTaxiViewModel extends TaxiGoogleMapViewModel {
         case "delivered":
           setCurrentStep(6);
           clearMapData();
-          zoomToLocation(
-            LatLng(
-              onGoingOrderTrip.taxiOrder.dropoffLatitude.toDouble(),
-              onGoingOrderTrip.taxiOrder.dropoffLongitude.toDouble(),
-            ),
-          );
+          // zoomToLocation(
+          //   LatLng(
+          //     onGoingOrderTrip.taxiOrder.dropoffLatitude.toDouble(),
+          //     onGoingOrderTrip.taxiOrder.dropoffLongitude.toDouble(),
+          //   ),
+          // );
           stopAllListeners();
           break;
         case "failed":

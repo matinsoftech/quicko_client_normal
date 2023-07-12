@@ -142,18 +142,22 @@ class AuthRequest extends HttpService {
     }
   }
 
-  Future<ApiResponse> verifyOTP(String phoneNumber, String code,
+  Future<ApiResponse> verifyOTP(String phoneNumber, String code, String password,
       {bool isLogin: false}) async {
+
+    print("here it i0 $phoneNumber $code $password");
     final apiResult = await post(
       Api.verifyOtp,
       {
         "phone": phoneNumber,
-        "code": code,
-        "is_login": isLogin,
+        "token": code,
+        "password": password,
       },
     );
     final apiResponse = ApiResponse.fromResponse(apiResult);
+    print("Here is api${apiResponse.body.toString()}");
     if (apiResponse.allGood) {
+      print("Here it is the  $apiResponse");
       return apiResponse;
     } else {
       throw apiResponse.message;

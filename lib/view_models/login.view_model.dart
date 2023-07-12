@@ -131,7 +131,7 @@ class LoginViewModel extends MyBaseViewModel {
     await viewContext.push(
       (context) => AccountVerificationEntry(
         vm: this,
-        onSubmit: (smsCode) {
+        onSubmit: (smsCode, password) {
           //
           if (AppStrings.isFirebaseOtp) {
             verifyFirebaseOTP(smsCode);
@@ -207,6 +207,7 @@ class LoginViewModel extends MyBaseViewModel {
       final apiResponse = await _authRequest.verifyOTP(
         accountPhoneNumber,
         smsCode,
+        "",
         isLogin: true,
       );
 

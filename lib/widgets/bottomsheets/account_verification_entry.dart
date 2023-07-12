@@ -17,12 +17,14 @@ class AccountVerificationEntry extends StatefulWidget {
     this.vm,
     Key key,
     this.phone = "",
+    this.password,
   }) : super(key: key);
 
-  final Function(String) onSubmit;
+  final Function(String, String) onSubmit;
   final Function onResendCode;
   final MyBaseViewModel vm;
   final String phone;
+  final String password;
 
   @override
   _AccountVerificationEntryState createState() =>
@@ -35,6 +37,7 @@ class _AccountVerificationEntryState extends State<AccountVerificationEntry> {
   int resendSecs = 5;
   int maxResendSeconds = 30;
   bool loading = false;
+  String password;
 
   @override
   void initState() {
@@ -102,6 +105,32 @@ class _AccountVerificationEntryState extends State<AccountVerificationEntry> {
               smsCode = value;
             },
           ),
+          "Provide your new password".i18n.text.bold.xl2.makeCentered(),
+          "Enter your new password".i18n.text.makeCentered(),
+          TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+                borderSide: BorderSide(color: Colors.green),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+                borderSide: BorderSide(color: Colors.green),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+                borderSide: BorderSide(color: Colors.green),
+              ),
+              fillColor: Colors.green.withOpacity(0.1),
+              filled: true,
+            ),
+            onChanged: (value) {
+              password = value;
+            },
+          ),
+          SizedBox(
+            height: 20,
+          ),
 
           //submit
           CustomButton(
@@ -109,10 +138,10 @@ class _AccountVerificationEntryState extends State<AccountVerificationEntry> {
             loading: widget.vm.busy(widget.vm.firebaseVerificationId),
             onPressed: () {
               //
-              if (smsCode == null || smsCode.length != 6) {
-                widget.vm.toastError("Verification code required".i18n);
+              if (smsCode == null || smsCode.length != 6 || password == null) {
+                widget.vm.toastError("Please fill everything".i18n);
               } else {
-                widget.onSubmit(smsCode);
+                widget.onSubmit(smsCode, password);
               }
             },
           ),

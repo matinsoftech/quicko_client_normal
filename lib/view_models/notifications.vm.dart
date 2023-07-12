@@ -7,7 +7,7 @@ import 'package:fuodz/view_models/base.view_model.dart';
 
 class NotificationsViewModel extends MyBaseViewModel {
   //
-  List<NotificationModel> notifications = [];
+  List<MyNotificationModel> notifications = [];
 
   NotificationsViewModel(BuildContext context) {
     this.viewContext = context;
@@ -28,7 +28,7 @@ class NotificationsViewModel extends MyBaseViewModel {
   }
 
   //
-  void showNotificationDetails(NotificationModel notificationModel) async {
+  void showNotificationDetails(MyNotificationModel notificationModel) async {
     //
     notificationModel.read = true;
     NotificationService.updateNotification(notificationModel);
